@@ -1,0 +1,125 @@
+/* 钱包按钮基础样式 */
+.wallet-adapter-button {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  background: rgba(68, 255, 68, 0.1) !important;
+  border: 1px solid rgba(68, 255, 68, 0.2) !important;
+  color: #44FF44 !important;
+  text-shadow: 0 0 8px rgba(68, 255, 68, 0.5) !important;
+}
+
+/* 悬停效果 */
+.wallet-adapter-button:hover {
+  background: rgba(68, 255, 68, 0.2) !important;
+  border-color: rgba(68, 255, 68, 0.4) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 
+    0 0 15px rgba(68, 255, 68, 0.3),
+    inset 0 0 10px rgba(68, 255, 68, 0.2) !important;
+}
+
+/* 点击效果 */
+.wallet-adapter-button:active {
+  transform: translateY(1px) !important;
+}
+
+/* 下拉菜单样式 */
+.wallet-adapter-dropdown {
+  font-family: 'Press Start 2P', monospace !important;
+}
+
+/* 模态框样式 */
+.wallet-adapter-modal-wrapper {
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(68, 255, 68, 0.2) !important;
+}
+
+.wallet-adapter-modal-title {
+  font-family: 'Press Start 2P', monospace !important;
+  color: #44FF44 !important;
+  text-shadow: 0 0 8px rgba(68, 255, 68, 0.5) !important;
+}
+
+.wallet-adapter-modal-content {
+  background: rgba(13, 13, 13, 0.95) !important;
+  border: 1px solid rgba(68, 255, 68, 0.2) !important;
+}
+
+/* 钱包列表样式 */
+.wallet-adapter-button-list {
+  gap: 8px !important;
+}
+
+.wallet-adapter-button-list-item {
+  background: rgba(68, 255, 68, 0.1) !important;
+  border: 1px solid rgba(68, 255, 68, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.wallet-adapter-button-list-item:hover {
+  background: rgba(68, 255, 68, 0.2) !important;
+  border-color: rgba(68, 255, 68, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* 连接状态样式 */
+.wallet-adapter-button-trigger[data-connected="true"] {
+  background: rgba(68, 255, 68, 0.2) !important;
+  border-color: rgba(68, 255, 68, 0.4) !important;
+}
+
+/* 动画效果 */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.wallet-adapter-button-trigger:hover {
+  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+/* 错误状态样式 */
+.wallet-adapter-modal-error {
+  color: #FF4444 !important;
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 12px !important;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.5) !important;
+}
+
+/* 加载状态样式 */
+.wallet-adapter-modal-spinner {
+  color: #44FF44 !important;
+}
+
+/* 关闭按钮样式 */
+.wallet-adapter-modal-button-close {
+  background: rgba(68, 255, 68, 0.1) !important;
+  border: 1px solid rgba(68, 255, 68, 0.2) !important;
+  color: #44FF44 !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  background: rgba(68, 255, 68, 0.2) !important;
+  border-color: rgba(68, 255, 68, 0.4) !important;
+}

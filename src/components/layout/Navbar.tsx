@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link, NavLink } from 'react-router-dom';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import Logo from '../ui/Logo';
 
 const Navbar = () => {
-  const [isConnected, setIsConnected] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { connected } = useWallet();
 
   const navItems = [
     { name: 'TRUMP SERIES', path: '/trump-series' },
@@ -60,28 +62,38 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* Wallet Connection */}
-          <motion.button
-            className={`degen-button text-xs ${
-              isConnected ? 'bg-meme-green/20 border-meme-green/40' : 'bg-meme-green border-meme-green'
-            } relative group`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsConnected(!isConnected)}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="relative z-10">
-              {isConnected ? 'CONNECTED' : 'CONNECT WALLET'}
-            </span>
+          {/* Wallet Connection Button */}
+          <div className="relative">
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-meme-green/20 to-meme-cyan/20 rounded-lg -z-0"
-              initial={{ scale: 0 }}
-              whileHover={{ scale: 1 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="wallet-adapter-button-trigger"
+            >
+              <WalletMultiButton 
+                className={`degen-button text-xs ${
+                  connected ? 'bg-meme-green/20 border-meme-green/40' : 'bg-meme-green border-meme-green'
+                } relative group`}
+              />
+            </motion.div>
+            
+            {/* Glow Effect */}
+            <motion.div
+              className="absolute inset-0 -z-10 blur-sm"
+              animate={{
+                opacity: [0.5, 0.8, 0.5],
+                scale: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              style={{
+                background: `radial-gradient(circle, ${connected ? 'rgba(68, 255, 68, 0.2)' : 'rgba(139, 92, 246, 0.2)'}, transparent 70%)`,
+              }}
             />
-          </motion.button>
+          </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
